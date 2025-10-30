@@ -1,0 +1,14 @@
+gensim
+pandas
+numpy
+xgboost
+lightgbm
+catboost
+dill
+scikit-learn
+nltk
+tensorflow
+evaluation
+fasttext-wheel
+pyyaml
+--extra-index-url https://pypi.ngc.nvidia.com
