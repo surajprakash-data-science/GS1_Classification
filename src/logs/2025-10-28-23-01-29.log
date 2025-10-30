@@ -1,0 +1,6 @@
+[2025-10-28 23:01:31,144 ] root INFO Label encode + one-hot target done
+[2025-10-28 23:01:31,867 ] root INFO Train/Val/Test for level_1 saved as NumPy arrays.
+[2025-10-28 23:01:31,869 ] gensim.utils INFO loading Word2Vec object from ../w2v_model/word2vec.model
+[2025-10-28 23:01:31,918 ] gensim.utils INFO loading wv recursively from ../w2v_model/word2vec.model.wv.* with mmap=None
+[2025-10-28 23:01:31,918 ] gensim.utils INFO setting ignored attribute cum_table to None
+[2025-10-28 23:01:32,124 ] gensim.utils INFO Word2Vec lifecycle event {'fname': '../w2v_model/word2vec.model', 'datetime': '2025-10-28T23:01:32.113671', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'loaded'}

@@ -1,0 +1,101 @@
+[2025-10-28 22:55:03,733 ] root INFO Label encode + one-hot target done
+[2025-10-28 22:55:04,455 ] root INFO Train/Val/Test for level_1 saved as NumPy arrays.
+[2025-10-28 22:55:04,470 ] root INFO Label encode + one-hot target done
+[2025-10-28 22:55:05,300 ] root INFO Train/Val/Test for level_2 saved as NumPy arrays.
+[2025-10-28 22:55:05,310 ] root INFO Label encode + one-hot target done
+[2025-10-28 22:55:06,031 ] root INFO Train/Val/Test for level_3 saved as NumPy arrays.
+[2025-10-28 22:55:09,368 ] gensim.models.word2vec INFO collecting all words and their counts
+[2025-10-28 22:55:09,368 ] gensim.models.word2vec INFO PROGRESS: at sentence #0, processed 0 words, keeping 0 word types
+[2025-10-28 22:55:09,459 ] gensim.models.word2vec INFO collected 31919 word types from a corpus of 669386 raw words and 7734 sentences
+[2025-10-28 22:55:09,459 ] gensim.models.word2vec INFO Creating a fresh vocabulary
+[2025-10-28 22:55:09,549 ] gensim.utils INFO Word2Vec lifecycle event {'msg': 'effective_min_count=1 retains 31919 unique words (100.00% of original 31919, drops 0)', 'datetime': '2025-10-28T22:55:09.533452', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'prepare_vocab'}
+[2025-10-28 22:55:09,549 ] gensim.utils INFO Word2Vec lifecycle event {'msg': 'effective_min_count=1 leaves 669386 word corpus (100.00% of original 669386, drops 0)', 'datetime': '2025-10-28T22:55:09.549066', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'prepare_vocab'}
+[2025-10-28 22:55:09,674 ] gensim.models.word2vec INFO deleting the raw counts dictionary of 31919 items
+[2025-10-28 22:55:09,674 ] gensim.models.word2vec INFO sample=0.001 downsamples 32 most-common words
+[2025-10-28 22:55:09,674 ] gensim.utils INFO Word2Vec lifecycle event {'msg': 'downsampling leaves estimated 558293.1474155711 word corpus (83.4%% of prior 669386)', 'datetime': '2025-10-28T22:55:09.674133', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'prepare_vocab'}
+[2025-10-28 22:55:09,912 ] gensim.models.word2vec INFO estimated required memory for 31919 words and 300 dimensions: 92565100 bytes
+[2025-10-28 22:55:09,912 ] gensim.models.word2vec INFO resetting layer weights
+[2025-10-28 22:55:09,970 ] gensim.utils INFO Word2Vec lifecycle event {'update': False, 'trim_rule': 'None', 'datetime': '2025-10-28T22:55:09.970401', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'build_vocab'}
+[2025-10-28 22:55:09,970 ] gensim.utils INFO Word2Vec lifecycle event {'msg': 'training model with 4 workers on 31919 vocabulary and 300 features, using sg=1 hs=0 sample=0.001 negative=5 window=5 shrink_windows=True', 'datetime': '2025-10-28T22:55:09.970934', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'train'}
+[2025-10-28 22:55:10,984 ] gensim.models.word2vec INFO EPOCH 0 - PROGRESS: at 24.61% examples, 136294 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:12,047 ] gensim.models.word2vec INFO EPOCH 0 - PROGRESS: at 59.48% examples, 158539 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:13,060 ] gensim.models.word2vec INFO EPOCH 0 - PROGRESS: at 89.13% examples, 162363 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:13,237 ] gensim.models.word2vec INFO EPOCH 0: training on 669386 raw words (558699 effective words) took 3.3s, 171018 effective words/s
+[2025-10-28 22:55:14,253 ] gensim.models.word2vec INFO EPOCH 1 - PROGRESS: at 37.51% examples, 199507 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:15,260 ] gensim.models.word2vec INFO EPOCH 1 - PROGRESS: at 74.44% examples, 207306 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:16,094 ] gensim.models.word2vec INFO EPOCH 1: training on 669386 raw words (558309 effective words) took 2.8s, 195941 effective words/s
+[2025-10-28 22:55:17,221 ] gensim.models.word2vec INFO EPOCH 2 - PROGRESS: at 31.07% examples, 152567 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:18,326 ] gensim.models.word2vec INFO EPOCH 2 - PROGRESS: at 60.87% examples, 151802 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:19,386 ] gensim.models.word2vec INFO EPOCH 2 - PROGRESS: at 89.13% examples, 152653 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:19,555 ] gensim.models.word2vec INFO EPOCH 2: training on 669386 raw words (558252 effective words) took 3.5s, 161499 effective words/s
+[2025-10-28 22:55:20,583 ] gensim.models.word2vec INFO EPOCH 3 - PROGRESS: at 37.51% examples, 199309 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:21,591 ] gensim.models.word2vec INFO EPOCH 3 - PROGRESS: at 78.73% examples, 218742 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:22,052 ] gensim.models.word2vec INFO EPOCH 3: training on 669386 raw words (558122 effective words) took 2.5s, 225008 effective words/s
+[2025-10-28 22:55:23,137 ] gensim.models.word2vec INFO EPOCH 4 - PROGRESS: at 42.76% examples, 215504 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:24,173 ] gensim.models.word2vec INFO EPOCH 4 - PROGRESS: at 84.90% examples, 224350 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:24,453 ] gensim.models.word2vec INFO EPOCH 4: training on 669386 raw words (557946 effective words) took 2.4s, 232184 effective words/s
+[2025-10-28 22:55:25,557 ] gensim.models.word2vec INFO EPOCH 5 - PROGRESS: at 42.76% examples, 213720 words/s, in_qsize 8, out_qsize 0
+[2025-10-28 22:55:26,592 ] gensim.models.word2vec INFO EPOCH 5 - PROGRESS: at 83.18% examples, 219676 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:26,901 ] gensim.models.word2vec INFO EPOCH 5: training on 669386 raw words (558456 effective words) took 2.4s, 228505 effective words/s
+[2025-10-28 22:55:27,909 ] gensim.models.word2vec INFO EPOCH 6 - PROGRESS: at 41.34% examples, 225166 words/s, in_qsize 8, out_qsize 0
+[2025-10-28 22:55:28,924 ] gensim.models.word2vec INFO EPOCH 6 - PROGRESS: at 82.00% examples, 227904 words/s, in_qsize 8, out_qsize 0
+[2025-10-28 22:55:29,334 ] gensim.models.word2vec INFO EPOCH 6: training on 669386 raw words (558105 effective words) took 2.4s, 230019 effective words/s
+[2025-10-28 22:55:30,435 ] gensim.models.word2vec INFO EPOCH 7 - PROGRESS: at 42.76% examples, 213605 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:31,440 ] gensim.models.word2vec INFO EPOCH 7 - PROGRESS: at 83.18% examples, 222861 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:31,759 ] gensim.models.word2vec INFO EPOCH 7: training on 669386 raw words (558222 effective words) took 2.4s, 230789 effective words/s
+[2025-10-28 22:55:32,815 ] gensim.models.word2vec INFO EPOCH 8 - PROGRESS: at 42.76% examples, 222557 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:33,833 ] gensim.models.word2vec INFO EPOCH 8 - PROGRESS: at 86.26% examples, 233856 words/s, in_qsize 8, out_qsize 0
+[2025-10-28 22:55:34,116 ] gensim.models.word2vec INFO EPOCH 8: training on 669386 raw words (558292 effective words) took 2.4s, 237408 effective words/s
+[2025-10-28 22:55:35,193 ] gensim.models.word2vec INFO EPOCH 9 - PROGRESS: at 42.76% examples, 218068 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:36,210 ] gensim.models.word2vec INFO EPOCH 9 - PROGRESS: at 83.18% examples, 223535 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:36,542 ] gensim.models.word2vec INFO EPOCH 9: training on 669386 raw words (558208 effective words) took 2.4s, 229520 effective words/s
+[2025-10-28 22:55:37,599 ] gensim.models.word2vec INFO EPOCH 10 - PROGRESS: at 42.76% examples, 222158 words/s, in_qsize 8, out_qsize 0
+[2025-10-28 22:55:38,607 ] gensim.models.word2vec INFO EPOCH 10 - PROGRESS: at 86.26% examples, 235251 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:38,876 ] gensim.models.word2vec INFO EPOCH 10: training on 669386 raw words (558269 effective words) took 2.3s, 240579 effective words/s
+[2025-10-28 22:55:39,893 ] gensim.models.word2vec INFO EPOCH 11 - PROGRESS: at 37.51% examples, 198654 words/s, in_qsize 8, out_qsize 0
+[2025-10-28 22:55:40,904 ] gensim.models.word2vec INFO EPOCH 11 - PROGRESS: at 78.73% examples, 217662 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:41,342 ] gensim.models.word2vec INFO EPOCH 11: training on 669386 raw words (558121 effective words) took 2.5s, 226161 effective words/s
+[2025-10-28 22:55:42,445 ] gensim.models.word2vec INFO EPOCH 12 - PROGRESS: at 42.76% examples, 213499 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:43,456 ] gensim.models.word2vec INFO EPOCH 12 - PROGRESS: at 84.90% examples, 226439 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:43,739 ] gensim.models.word2vec INFO EPOCH 12: training on 669386 raw words (558851 effective words) took 2.4s, 234104 effective words/s
+[2025-10-28 22:55:44,752 ] gensim.models.word2vec INFO EPOCH 13 - PROGRESS: at 42.76% examples, 229801 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:45,796 ] gensim.models.word2vec INFO EPOCH 13 - PROGRESS: at 84.90% examples, 231103 words/s, in_qsize 8, out_qsize 0
+[2025-10-28 22:55:46,086 ] gensim.models.word2vec INFO EPOCH 13: training on 669386 raw words (558610 effective words) took 2.3s, 237825 effective words/s
+[2025-10-28 22:55:47,109 ] gensim.models.word2vec INFO EPOCH 14 - PROGRESS: at 42.76% examples, 229971 words/s, in_qsize 8, out_qsize 0
+[2025-10-28 22:55:48,113 ] gensim.models.word2vec INFO EPOCH 14 - PROGRESS: at 84.54% examples, 235227 words/s, in_qsize 6, out_qsize 2
+[2025-10-28 22:55:48,382 ] gensim.models.word2vec INFO EPOCH 14: training on 669386 raw words (557782 effective words) took 2.3s, 243509 effective words/s
+[2025-10-28 22:55:49,443 ] gensim.models.word2vec INFO EPOCH 15 - PROGRESS: at 42.76% examples, 221105 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:50,449 ] gensim.models.word2vec INFO EPOCH 15 - PROGRESS: at 86.26% examples, 234919 words/s, in_qsize 8, out_qsize 0
+[2025-10-28 22:55:50,743 ] gensim.models.word2vec INFO EPOCH 15: training on 669386 raw words (558566 effective words) took 2.4s, 236061 effective words/s
+[2025-10-28 22:55:51,792 ] gensim.models.word2vec INFO EPOCH 16 - PROGRESS: at 44.10% examples, 233567 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:52,858 ] gensim.models.word2vec INFO EPOCH 16 - PROGRESS: at 89.13% examples, 238587 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:53,027 ] gensim.models.word2vec INFO EPOCH 16: training on 669386 raw words (558059 effective words) took 2.3s, 245404 effective words/s
+[2025-10-28 22:55:54,055 ] gensim.models.word2vec INFO EPOCH 17 - PROGRESS: at 42.76% examples, 229784 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:55,062 ] gensim.models.word2vec INFO EPOCH 17 - PROGRESS: at 87.50% examples, 242736 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:55,320 ] gensim.models.word2vec INFO EPOCH 17: training on 669386 raw words (558449 effective words) took 2.3s, 244620 effective words/s
+[2025-10-28 22:55:56,386 ] gensim.models.word2vec INFO EPOCH 18 - PROGRESS: at 42.76% examples, 220379 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:57,398 ] gensim.models.word2vec INFO EPOCH 18 - PROGRESS: at 84.90% examples, 229327 words/s, in_qsize 6, out_qsize 1
+[2025-10-28 22:55:57,648 ] gensim.models.word2vec INFO EPOCH 18: training on 669386 raw words (558178 effective words) took 2.3s, 239571 effective words/s
+[2025-10-28 22:55:58,696 ] gensim.models.word2vec INFO EPOCH 19 - PROGRESS: at 44.10% examples, 233493 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:59,759 ] gensim.models.word2vec INFO EPOCH 19 - PROGRESS: at 89.13% examples, 238330 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:55:59,926 ] gensim.models.word2vec INFO EPOCH 19: training on 669386 raw words (558348 effective words) took 2.3s, 246132 effective words/s
+[2025-10-28 22:56:00,975 ] gensim.models.word2vec INFO EPOCH 20 - PROGRESS: at 42.76% examples, 222546 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:56:01,980 ] gensim.models.word2vec INFO EPOCH 20 - PROGRESS: at 86.26% examples, 235930 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:56:02,231 ] gensim.models.word2vec INFO EPOCH 20: training on 669386 raw words (558177 effective words) took 2.3s, 242445 effective words/s
+[2025-10-28 22:56:03,242 ] gensim.models.word2vec INFO EPOCH 21 - PROGRESS: at 42.76% examples, 231695 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:56:04,244 ] gensim.models.word2vec INFO EPOCH 21 - PROGRESS: at 84.90% examples, 236783 words/s, in_qsize 6, out_qsize 1
+[2025-10-28 22:56:04,507 ] gensim.models.word2vec INFO EPOCH 21: training on 669386 raw words (558523 effective words) took 2.3s, 245404 effective words/s
+[2025-10-28 22:56:05,531 ] gensim.models.word2vec INFO EPOCH 22 - PROGRESS: at 44.34% examples, 237414 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:56:06,535 ] gensim.models.word2vec INFO EPOCH 22 - PROGRESS: at 83.18% examples, 231118 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:56:06,826 ] gensim.models.word2vec INFO EPOCH 22: training on 669386 raw words (558325 effective words) took 2.3s, 241219 effective words/s
+[2025-10-28 22:56:07,835 ] gensim.models.word2vec INFO EPOCH 23 - PROGRESS: at 42.76% examples, 232636 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:56:08,916 ] gensim.models.word2vec INFO EPOCH 23 - PROGRESS: at 89.13% examples, 240870 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:56:09,102 ] gensim.models.word2vec INFO EPOCH 23: training on 669386 raw words (558482 effective words) took 2.3s, 245612 effective words/s
+[2025-10-28 22:56:10,158 ] gensim.models.word2vec INFO EPOCH 24 - PROGRESS: at 42.76% examples, 221997 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:56:11,175 ] gensim.models.word2vec INFO EPOCH 24 - PROGRESS: at 83.18% examples, 226889 words/s, in_qsize 7, out_qsize 0
+[2025-10-28 22:56:11,480 ] gensim.models.word2vec INFO EPOCH 24: training on 669386 raw words (558235 effective words) took 2.4s, 235757 effective words/s
+[2025-10-28 22:56:11,480 ] gensim.utils INFO Word2Vec lifecycle event {'msg': 'training on 16734650 raw words (13957586 effective words) took 61.5s, 226910 effective words/s', 'datetime': '2025-10-28T22:56:11.480762', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'train'}
+[2025-10-28 22:56:11,480 ] gensim.utils INFO Word2Vec lifecycle event {'params': 'Word2Vec<vocab=31919, vector_size=300, alpha=0.025>', 'datetime': '2025-10-28T22:56:11.480762', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'created'}
+[2025-10-28 22:56:11,482 ] gensim.utils INFO Word2Vec lifecycle event {'fname_or_handle': '../w2v_model/word2vec.model', 'separately': 'None', 'sep_limit': 10485760, 'ignore': frozenset(), 'datetime': '2025-10-28T22:56:11.482838', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'saving'}
+[2025-10-28 22:56:11,482 ] gensim.utils INFO not storing attribute cum_table
+[2025-10-28 22:56:11,584 ] gensim.utils INFO saved ../w2v_model/word2vec.model
