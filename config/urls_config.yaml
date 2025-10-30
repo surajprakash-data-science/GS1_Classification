@@ -1,0 +1,105 @@
+# urls_config.yaml
+data_sources:
+  goldstandard_eng: "../data/goldstandard_eng.csv"
+  fasttext_dir: "../data/fasttext_data/"
+  fasttext_train: "../data/fasttext_data/train"
+  fasttext_test: "../data/fasttext_data/test"
+  fasttext_validation: "../data/fasttext_data/validation"
+
+  product_preprocessed: "../data/product_preprocessed.csv"
+
+  nn_dir: "../data/nn_data/"
+  nn_train: "../data/nn_data/train"
+  nn_test: "../data/nn_data/test"
+  nn_validation: "../data/nn_data/validation"
+
+  fasttext_embeddings: "../data/embeddings"
+  word2vec_embeddings: "../data/embeddings"
+
+data_params:
+  lvl1_label_col: "GS1_Level1_Category"
+  lvl2_label_col: "GS1_Level2_Category"
+  lvl3_label_col: "GS1_Level3_Category"
+  product_name: "s:name"
+  product_description: "s:description"
+  product_category: "s:category"
+  product: "product"
+  standard_word_count: "standard_log_word_count"
+
+
+results_dir: 
+  classic_results: "../results/classic_results"
+  fasttext_results: "../results/fasttext_supervised_results"
+  nn_results_fasttext: "../results/nn_results_fasttext"
+  nn_results_word2vec: "../results/nn_results_word2vec"
+
+classic_classification_params:
+  test_size: 0.2
+  val_size: 0.1
+  random_state: 42
+
+output_paths:
+  lvl1_fasttext_train: "../data/fasttext_data/train/lvl1_fasttext_train.txt"
+  lvl1_fasttext_test: "../data/fasttext_data/test/lvl1_fasttext_test.txt"
+  lvl1_fasttext_val: "../data/fasttext_data/validation/lvl1_fasttext_val.txt"
+
+  lvl2_fasttext_train: "../data/fasttext_data/train/lvl2_fasttext_train.txt"
+  lvl2_fasttext_test: "../data/fasttext_data/test/lvl2_fasttext_test.txt"
+  lvl2_fasttext_val: "../data/fasttext_data/validation/lvl2_fasttext_val.txt"
+
+  lvl3_fasttext_train: "../data/fasttext_data/train/lvl3_fasttext_train.txt"
+  lvl3_fasttext_test: "../data/fasttext_data/test/lvl3_fasttext_test.txt"
+  lvl3_fasttext_val: "../data/fasttext_data/validation/lvl3_fasttext_val.txt"
+
+models:
+  models_dir: "../fasttext_models/"
+  lvl1_model: "../fasttext_models/fasttext_lvl1_model.bin"
+  lvl2_model: "../fasttext_models/fasttext_lvl2_model.bin"
+  lvl3_model: "../fasttext_models/fasttext_lvl3_model.bin"
+  w2v_model: "../w2v_model/word2vec.model"
+  lvl1_nn_model_fasttext: "../nn_models/lvl1_nn_model_fasttext.h5"
+  lvl2_nn_model_fasttext: "../nn_models/lvl2_nn_model_fasttext.h5"
+  lvl3_nn_model_fasttext: "../nn_models/lvl3_nn_model_fasttext.h5"
+  lvl1_nn_model_word2vec: "../nn_models/lvl1_nn_model_word2vec.h5"
+  lvl2_nn_model_word2vec: "../nn_models/lvl2_nn_model_word2vec.h5"
+  lvl3_nn_model_word2vec: "../nn_models/lvl3_nn_model_word2vec.h5"
+
+fasttext_training_params:
+  epoch: 25
+  learning_rate: 0.5
+  word_ngrams: 2
+  verbose: 2
+  loss_function: "ova"
+
+nn_model_params:
+  optimizer: "adam"
+  loss: "categorical_crossentropy"
+  metrics: ["accuracy","auc","precesion","recall"]
+  batch_size: 32
+  epochs: 30
+  softmax_activation: "softmax"
+  relu_activation: "relu"
+  lvl1_train_data_path: "../data/nn_data/train_level_1.npy.npz"
+  lvl2_train_data_path: "../data/nn_data/train_level_2.npy.npz"
+  lvl3_train_data_path: "../data/nn_data/train_level_3.npy.npz"
+  lvl1_test_data_path: "../data/nn_data/test_level_1.npy.npz"
+  lvl2_test_data_path: "../data/nn_data/test_level_2.npy.npz"
+  lvl3_test_data_path: "../data/nn_data/test_level_3.npy.npz"
+  lvl1_validation_data_path: "../data/nn_data/validation_level_1.npy.npz"
+  lvl2_validation_data_path: "../data/nn_data/validation_level_2.npy.npz"
+  lvl3_validation_data_path: "../data/nn_data/validation_level_3.npy.npz"
+  model_save_path: "../w2v_model/nn_model.h5"
+  
+
+
+fasttext_embedding_params:
+  embedding_dim: 300
+
+word2vec_embedding_params:
+  embedding_dim: 300
+  window_size: 5
+  min_count: 1
+  sg: 1
+  workers: 4
+  epoch: 25
+
