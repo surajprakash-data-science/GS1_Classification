@@ -1,0 +1,25 @@
+# Ignore the virtual environment
+venv/
+.venv/
+env/
+
+# Ignore Python cache files
+__pycache__/
+*.pyc
+
+# Ignore environment variables (security!)
+.env
+
+# Ignore specific files
+data.csv
+my_database.db
+
+# Ignore all files with a certain extension
+*.csv
+*.json
+*.xlsx
+*.zip
+
+# Ignore an entire folder dedicated to data
+data/
+datasets/

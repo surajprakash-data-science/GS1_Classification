@@ -22,16 +22,7 @@ def classic_classification(X_train, X_test, y_train, y_test):
     n_classes = len(np.unique(y_train_enc))
 
     classifiers = {
-        "xgb": XGBClassifier(objective='multi:softmax', use_label_encoder=False, random_state=42),
-        "lgb": lgb.LGBMClassifier(
-            objective='multiclass',
-            num_class=n_classes,
-            boosting_type='gbdt',
-            max_depth=-1,
-            n_estimators=500,
-            learning_rate=0.05,
-            random_state=42
-        )
+        "xgb": XGBClassifier(objective='multi:softmax', use_label_encoder=False, random_state=42)
     }
 
     results = {}
@@ -114,11 +105,11 @@ if __name__ == "__main__":
             y_val_flattened[i]
         )
 
-        # 📁 Create a subdirectory per level
+        # Create a subdirectory per level
         level_dir = os.path.join(results_dir, f"level_{i+1}")
         os.makedirs(level_dir, exist_ok=True)
 
-        # 💾 Save results for each model (xgb, lgb, etc.)
+        # Save results for each model (xgb, lgb, etc.)
         for model_name, metrics in result.items():
             result_path = os.path.join(level_dir, f"{model_name}_results.txt")
             with open(result_path, "w", encoding="utf-8") as f:
@@ -126,10 +117,10 @@ if __name__ == "__main__":
                 f.write(f"Model: {model_name}\n")
                 f.write(f"Accuracy: {metrics['accuracy']:.4f}\n\n")
 
-                f.write("📊 Classification Report:\n")
+                f.write("Classification Report:\n")
                 f.write(str(metrics["classification_report"]) + "\n\n")
 
-                f.write("🧩 Confusion Matrix:\n")
+                f.write("Confusion Matrix:\n")
                 f.write(str(metrics["confusion_matrix"]) + "\n")
 
             logging.info(f"Results for {model_name} (Level {i+1}) saved to {result_path}")

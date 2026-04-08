@@ -23,6 +23,11 @@ data_params:
   product_name: "s:name"
   product_description: "s:description"
   product_category: "s:category"
+  product_brand: "s:brand"
+  product_properties: "Properties"
+  product_breadcrumb: "s:breadcrumb"
+  product_host: "HOST"
+  product_url: "URL"
   product: "product"
   standard_word_count: "standard_log_word_count"
 
@@ -64,6 +69,10 @@ models:
   lvl2_nn_model_word2vec: "../nn_models/lvl2_nn_model_word2vec.h5"
   lvl3_nn_model_word2vec: "../nn_models/lvl3_nn_model_word2vec.h5"
 
+  lvl1_nn_model_word2vec_weighted: "../nn_models/lvl1_nn_model_word2vec_weighted.h5"
+  lvl2_nn_model_word2vec_weighted: "../nn_models/lvl2_nn_model_word2vec_weighted.h5"
+  lvl3_nn_model_word2vec_weighted: "../nn_models/lvl3_nn_model_word2vec_weighted.h5"
+
 fasttext_training_params:
   epoch: 25
   learning_rate: 0.5
@@ -72,11 +81,12 @@ fasttext_training_params:
   loss_function: "ova"
 
 nn_model_params:
-  optimizer: "adam"
+  learning_rate: 0.001
   loss: "categorical_crossentropy"
-  metrics: ["accuracy","auc","precesion","recall"]
+  metrics: ["accuracy", "Precision", "Recall"] 
   batch_size: 32
   epochs: 30
+  regularizer: 0.0001
   softmax_activation: "softmax"
   relu_activation: "relu"
   lvl1_train_data_path: "../data/nn_data/train_level_1.npy.npz"
@@ -96,9 +106,9 @@ fasttext_embedding_params:
   embedding_dim: 300
 
 word2vec_embedding_params:
-  embedding_dim: 300
+  embedding_dim: 100
   window_size: 5
-  min_count: 1
+  min_count: 5
   sg: 1
   workers: 4
   epoch: 25

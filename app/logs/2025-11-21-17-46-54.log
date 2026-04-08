@@ -1,0 +1,12 @@
+[2025-11-21 17:46:54,360 ] gensim.utils INFO loading Word2Vec object from A:\Dessertation-Project\app\../w2v_model/word2vec.model
+[2025-11-21 17:46:54,421 ] gensim.utils INFO loading wv recursively from A:\Dessertation-Project\app\../w2v_model/word2vec.model.wv.* with mmap=None
+[2025-11-21 17:46:54,421 ] gensim.utils INFO setting ignored attribute cum_table to None
+[2025-11-21 17:46:54,612 ] gensim.utils INFO Word2Vec lifecycle event {'fname': 'A:\\Dessertation-Project\\app\\../w2v_model/word2vec.model', 'datetime': '2025-11-21T17:46:54.596914', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'loaded'}
+[2025-11-21 17:46:58,642 ] werkzeug WARNING  * Debugger is active!
+[2025-11-21 17:46:58,642 ] werkzeug INFO  * Debugger PIN: 142-313-510
+[2025-11-21 17:46:58,700 ] werkzeug INFO 127.0.0.1 - - [21/Nov/2025 17:46:58] "[35m[1mPOST / HTTP/1.1[0m" 500 -
+[2025-11-21 17:46:58,800 ] werkzeug INFO 127.0.0.1 - - [21/Nov/2025 17:46:58] "[36mGET /?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+[2025-11-21 17:46:58,802 ] werkzeug INFO 127.0.0.1 - - [21/Nov/2025 17:46:58] "[36mGET /?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+[2025-11-21 17:46:58,835 ] werkzeug INFO 127.0.0.1 - - [21/Nov/2025 17:46:58] "GET /?__debugger__=yes&cmd=resource&f=console.png&s=vfMXt12ejiGqSUG7R69v HTTP/1.1" 200 -
+[2025-11-21 17:46:59,519 ] werkzeug INFO 127.0.0.1 - - [21/Nov/2025 17:46:59] "[36mGET /?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+[2025-11-21 17:53:15,833 ] werkzeug INFO  * Detected change in 'A:\\Dessertation-Project\\app\\app.py', reloading

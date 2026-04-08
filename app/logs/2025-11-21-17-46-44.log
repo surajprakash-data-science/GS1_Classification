@@ -1,0 +1,9 @@
+[2025-11-21 17:46:44,342 ] gensim.utils INFO loading Word2Vec object from ../w2v_model/word2vec.model
+[2025-11-21 17:46:44,396 ] gensim.utils INFO loading wv recursively from ../w2v_model/word2vec.model.wv.* with mmap=None
+[2025-11-21 17:46:44,396 ] gensim.utils INFO setting ignored attribute cum_table to None
+[2025-11-21 17:46:44,596 ] gensim.utils INFO Word2Vec lifecycle event {'fname': '../w2v_model/word2vec.model', 'datetime': '2025-11-21T17:46:44.565539', 'gensim': '4.3.2', 'python': '3.8.10 (tags/v3.8.10:3d8993a, May  3 2021, 11:48:03) [MSC v.1928 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.19045-SP0', 'event': 'loaded'}
+[2025-11-21 17:46:48,012 ] werkzeug INFO [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-11-21 17:46:48,012 ] werkzeug INFO [33mPress CTRL+C to quit[0m
+[2025-11-21 17:46:48,012 ] werkzeug INFO  * Restarting with stat
+[2025-11-21 17:53:16,670 ] werkzeug INFO  * Restarting with stat

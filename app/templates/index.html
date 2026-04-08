@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 60%;
+            margin: 50px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 6px;
+            border: 1px solid #aaa;
+            font-size: 14px;
+            resize: vertical;
+        }
+
+        .btn {
+            background: #0078ff;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background: #005fcc;
+        }
+
+        .result-card {
+            background: #ffffff;
+            margin-top: 25px;
+            padding: 20px;
+            border-left: 5px solid #0078ff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.08);
+        }
+
+        .result-card h2 {
+            margin-top: 0;
+            color: #0078ff;
+        }
+
+        .result-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .result-card li {
+            padding: 6px 0;
+            font-size: 15px;
+            color: #333;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Product Classification</h1>
+
+        <form method="POST">
+            <label for="product_text"><b>Enter Product Description:</b></label><br><br>
+            <textarea id="product_text" name="product_text" rows="4"></textarea><br>
+            <button class="btn" type="submit">Categorize</button>
+        </form>
+
+        {% if prediction_nn %}
+        <div class="result-card">
+            <h2>Neural Network Prediction</h2>
+            <ul>
+                <li><b>Level 1:</b> {{ prediction_nn["Level 1"] }}</li>
+                <li><b>Level 2:</b> {{ prediction_nn["Level 2"] }}</li>
+                <li><b>Level 3:</b> {{ prediction_nn["Level 3"] }}</li>
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if prediction_ft %}
+        <div class="result-card">
+            <h2>FastText Prediction</h2>
+            <ul>
+                <li><b>Level 1:</b> {{ prediction_ft["Level 1"] }}</li>
+                <li><b>Level 2:</b> {{ prediction_ft["Level 2"] }}</li>
+                <li><b>Level 3:</b> {{ prediction_ft["Level 3"] }}</li>
+            </ul>
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+</html>

@@ -3,6 +3,7 @@ from tensorflow.keras.utils import to_categorical
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 from sklearn.model_selection import train_test_split
+from sklearn.utils import class_weight
 import numpy as np
 import fasttext.util
 from gensim.models import Word2Vec
@@ -12,10 +13,10 @@ import os
 import nltk
 from logger import logging
 from utils import read_yaml
+import pickle
 
-# --------------------------------------------------
+
 # Load Configurations
-# --------------------------------------------------
 config = read_yaml("config/urls_config.yaml")
 
 fasttext_params = config["fasttext_embedding_params"]
@@ -32,14 +33,17 @@ numeric_col = config["data_params"]["standard_word_count"]
 
 file_path = config["data_sources"]["goldstandard_eng"]
 
-# --------------------------------------------------
+
 # Preprocessing Function
-# --------------------------------------------------
 def preprocessing_nn(df, product_col, numeric_col, label_col, level):
     np.random.seed(42)
     # Label encode + one-hot target
     label_encoder = LabelEncoder()
     y_encoded = label_encoder.fit_transform(df[label_col])
+    # Save label encoder
+    os.makedirs("tokenizers", exist_ok=True)
+    with open(f"tokenizers/label_encoder_{level}.pkl", "wb") as f:
+        pickle.dump(label_encoder, f)
     y_onehot = to_categorical(y_encoded)
     logging.info("Label encode + one-hot target done")
 
@@ -47,16 +51,55 @@ def preprocessing_nn(df, product_col, numeric_col, label_col, level):
     tokenizer = Tokenizer(num_words=10000, oov_token="<OOV>")
     tokenizer.fit_on_texts(df[product_col])
     sequences = tokenizer.texts_to_sequences(df[product_col])
-    padded_sequences = pad_sequences(sequences, maxlen=200, padding="post", truncating="post")
+    padded_sequences = pad_sequences(sequences, maxlen=100, padding="post", truncating="post")
 
     # Numeric input
     X_numeric = df[numeric_col].values.reshape(-1, 1)
-    # Train-test-validation split 1
-    X_train_text, X_temp_text, y_train, y_temp = train_test_split(padded_sequences, y_onehot, test_size=0.2, stratify=y_onehot, random_state=42)
-    X_train_num, X_temp_num = train_test_split(X_numeric, test_size=0.2, random_state=42)
-    # Train-test-validation split 1
-    X_val_text, X_test_text, y_val, y_test = train_test_split(X_temp_text, y_temp, test_size=0.5, stratify=y_temp,random_state=42)
-    X_val_num, X_test_num = train_test_split(X_temp_num, test_size=0.5, random_state=42) # Use the same random state to maintain alignment
+
+    # HANDLE minority CLASSES
+    y_counts = np.bincount(y_encoded)
+    minority_classes = np.where(y_counts <= 20)[0]
+
+    minority_mask = np.isin(y_encoded, minority_classes)
+
+    # minority samples → training only
+    X_text_single = padded_sequences[minority_mask]
+    X_num_single = X_numeric[minority_mask]
+    y_single = y_onehot[minority_mask]
+
+    # Remaining samples
+    X_text_common = padded_sequences[~minority_mask]
+    X_num_common = X_numeric[~minority_mask]
+    y_common = y_onehot[~minority_mask]
+    y_common_encoded = y_encoded[~minority_mask]
+
+    logging.info(
+        f"{level}: Found {len(minority_classes)} minority classes "
+        f"({len(y_single)} samples) → training only"
+    )
+
+    # Split 1: Train vs. Temp
+    X_train_text_c, X_temp_text, X_train_num_c, X_temp_num, y_train_c, y_temp = train_test_split(
+        X_text_common,
+        X_num_common,
+        y_common,
+        test_size=0.2,
+        stratify=y_common_encoded,
+        random_state=42
+    )
+    # Split 2: Val vs. Test
+    X_val_text, X_test_text, X_val_num, X_test_num, y_val, y_test = train_test_split(
+        X_temp_text,
+        X_temp_num,
+        y_temp,
+        test_size=0.5,
+        stratify=np.argmax(y_temp, axis=1),
+        random_state=42
+    )
+    # Combine singleton samples into training
+    X_train_text = np.vstack([X_train_text_c, X_text_single])
+    X_train_num = np.vstack([X_train_num_c, X_num_single])
+    y_train = np.vstack([y_train_c, y_single])
 
     # Save as .npy arrays (more efficient than CSV for NN input)
     os.makedirs(os.path.dirname(train_path), exist_ok=True)
@@ -69,9 +112,7 @@ def preprocessing_nn(df, product_col, numeric_col, label_col, level):
     logging.info(f"Train/Val/Test for {level} saved as NumPy arrays.")
     return tokenizer
 
-# --------------------------------------------------
 # FastText Embeddings
-# --------------------------------------------------
 def fasttext_embeddings(tokenizer):
     fasttext.util.download_model("en", if_exists="ignore")
     ft = fasttext.load_model('cc.en.300.bin')
@@ -82,12 +123,27 @@ def fasttext_embeddings(tokenizer):
 
     for word, i in word_index.items():
         ft_embedding_matrix[i] = ft.get_word_vector(word)
-    logging.info("✅ FastText embeddings created successfully.")
+    logging.info("FastText embeddings created successfully.")
     return ft_embedding_matrix, word_index, embedding_dim
 
-# --------------------------------------------------
+def get_class_weights(y_onehot, power=1):
+    # 1. Convert one-hot to integer labels
+    y_encoded = np.argmax(y_onehot, axis=1)
+    
+    # 2. Calculate balanced weights
+    weights_array = class_weight.compute_class_weight(
+        class_weight='balanced',
+        classes=np.unique(y_encoded),
+        y=y_encoded
+    )
+    weights_array = np.power(weights_array, power)
+    # 3. Convert array to Keras dictionary format
+    class_weights_dict = dict(enumerate(weights_array))
+    
+    logging.info("Class weights calculated successfully.")
+    return class_weights_dict
+
 # Word2Vec Embeddings
-# --------------------------------------------------
 def word2vec_training(df, text_col):
     nltk.download('punkt_tab')
     sentences = [word_tokenize(text.lower()) for text in df[text_col].dropna()]
@@ -103,7 +159,7 @@ def word2vec_training(df, text_col):
     )
     os.makedirs(os.path.dirname(w2v_model_path), exist_ok=True)
     w2v_model.save(w2v_model_path)
-    logging.info("✅ Word2Vec model trained and saved successfully.")
+    logging.info("Word2Vec model trained and saved successfully.")
     return w2v_model
 
 def word2vec_embeddings(tokenizer, w2v_model):
@@ -116,7 +172,7 @@ def word2vec_embeddings(tokenizer, w2v_model):
             w2v_embedding_matrix[i] = w2v_model.wv[word]
         else:
             w2v_embedding_matrix[i] = np.random.normal(size=(embedding_dim,))
-    logging.info("✅ Word2Vec embeddings created successfully.")
+    logging.info("Word2Vec embeddings created successfully.")
     return w2v_embedding_matrix, word_index, embedding_dim
 
 if __name__ == "__main__":
@@ -127,4 +183,4 @@ if __name__ == "__main__":
     preprocessing_nn(df, product, numeric_col, label2, "level_2")
     preprocessing_nn(df, product, numeric_col, label3, "level_3")
 
-    w2v_training = word2vec_training(df, product)
+    w2v_training = word2vec_training(df, product) 

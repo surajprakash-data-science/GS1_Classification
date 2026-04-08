@@ -1,0 +1,4 @@
+[2025-11-21 15:32:31,647 ] root INFO ML components loaded successfully.
+[2025-11-21 15:32:31,654 ] werkzeug WARNING  * Debugger is active!
+[2025-11-21 15:32:31,669 ] werkzeug INFO  * Debugger PIN: 142-313-510
+[2025-11-21 15:32:49,978 ] werkzeug INFO  * Detected change in 'A:\\Dessertation-Project\\app.py', reloading
